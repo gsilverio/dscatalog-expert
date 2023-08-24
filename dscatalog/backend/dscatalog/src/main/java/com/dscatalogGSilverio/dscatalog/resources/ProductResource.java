@@ -31,7 +31,7 @@ public class ProductResource {
         Page<ProductDTO> list = service.findAllPaged(pageable);
         return ResponseEntity.ok().body(list);
     }
-    @GetMapping(value="{id}")
+    @GetMapping(value="/{id}")
     public ResponseEntity<ProductDTO> findById(@PathVariable Long id){
         ProductDTO dto = service.findById(id);
         return ResponseEntity.ok().body(dto);
@@ -43,12 +43,12 @@ public class ProductResource {
                 .buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
-    @PutMapping(value="{id}")
+    @PutMapping(value="/{id}")
     public ResponseEntity<ProductDTO> update(@PathVariable Long id,@RequestBody ProductDTO dto){
         dto = service.update(id, dto);
         return ResponseEntity.ok().body(dto);
     }
-    @DeleteMapping(value="{id}")
+    @DeleteMapping(value="/{id}")
     public ResponseEntity<ProductDTO> delete(@PathVariable Long id){
         service.delete(id);
         return ResponseEntity.noContent().build();
