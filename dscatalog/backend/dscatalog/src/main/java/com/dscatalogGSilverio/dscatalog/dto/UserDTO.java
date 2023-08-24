@@ -1,6 +1,9 @@
 package com.dscatalogGSilverio.dscatalog.dto;
 
 import com.dscatalogGSilverio.dscatalog.entities.User;
+import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -9,8 +12,11 @@ import java.util.Set;
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
+    @NotBlank(message = "Campo obrigatorio")
     private String firstName;
     private String lastName;
+    @Column(unique = true)
+    @Email(message = "Favor entrar um email valido")
     private String email;
 
     Set<RoleDTO> roles = new HashSet<>();

@@ -1,6 +1,9 @@
 package com.dscatalogGSilverio.dscatalog.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -14,9 +17,10 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String firstName;
     private String lastName;
-    @Column(unique = true)
+
     private String email;
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
